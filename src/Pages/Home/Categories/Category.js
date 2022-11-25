@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Category.css'
 
 const Category = ({ info }) => {
@@ -26,7 +27,7 @@ const Category = ({ info }) => {
                     <div className="w-52 ">
                         <img src={image} className="rounded-lg shadow-2x z-10" alt='img' />
                     </div>
-                    <button className="btn btn-ghost text-slate-200 text-xl">{name}</button>
+                    <Link to={`category/${name}`}><button className="btn btn-ghost text-slate-200 text-xl">{name}</button></Link>
                 </div>
             </div>
         </div>
