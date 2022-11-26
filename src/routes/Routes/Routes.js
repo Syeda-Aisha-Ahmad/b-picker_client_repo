@@ -1,4 +1,5 @@
 import NotFound from "../../Pages/404/NotFound";
+import Blog from "../../Pages/Blog/Blog";
 import Category from "../../Pages/Category/Category";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
             {
                 path: '/category/:id',
                 element: <Category></Category>
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
             },
             {
                 path: '/login',

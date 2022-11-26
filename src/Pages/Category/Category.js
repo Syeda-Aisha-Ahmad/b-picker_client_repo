@@ -40,11 +40,11 @@ const Category = () => {
                                         <input type="text" placeholder="Item Name" className="input input-bordered rounded " />
                                         <input type="text" placeholder="Price" className="input input-bordered rounded" />
                                     </div>
-                                    <input type="text" placeholder="Phone Number" className="input input-bordered rounded w-full mb-2" />
+                                    <input type="tel" placeholder="Phone Number" className="input input-bordered rounded w-full mb-2" />
 
                                     <input type="text" placeholder="Location" className="input input-bordered rounded w-full mb-2" />
 
-                                    <input className='btn btn-secondary text-accent w-full mt-5' type="submit" value="submit" />
+                                    <input className='btn btn-secondary w-full mt-5' type="submit" value="submit" />
 
                                 </form>
 

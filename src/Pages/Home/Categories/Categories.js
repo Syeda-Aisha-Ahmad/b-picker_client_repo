@@ -1,12 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import image from '../../../assets/banner.jpg'
-import bgfantasy from '../../../assets/bg-fantasy.jpg'
-import fiction from '../../../assets/fiction.jpg'
-import fantasy from '../../../assets/fantasy.jpg'
-import fictionbg from '../../../assets/fictionbg.jpg'
-import adventurebg from '../../../assets/adventurebg.jpg'
-import adventure from '../../../assets/adventure.jpg'
-import { info } from 'daisyui/src/colors';
+import React from 'react';
 import Category from './Category';
 
 const Categories = () => {

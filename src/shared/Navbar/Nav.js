@@ -21,7 +21,7 @@ const Nav = () => {
                                 <li><a>Submenu 2</a></li>
                             </ul>
                         </li>
-                        <li><a>Item 3</a></li>
+                        <li><Link to={'/blog'}>Blog</Link></li>
                     </ul>
                 </div>
                 <Link to={'/'} className=" text-white normal-case font-bold text-2xl">B-Picker</Link>
@@ -39,7 +39,7 @@ const Nav = () => {
                             <li><a>Submenu 2</a></li>
                         </ul>
                     </li>
-                    <li><a>Item 3</a></li>
+                    <li><Link to={'/blog'}>Blog</Link></li>
                 </ul>
             </div>
             <div className="navbar-end">
