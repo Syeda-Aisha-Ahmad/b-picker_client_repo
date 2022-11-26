@@ -11,17 +11,17 @@ module.exports = {
       {
         mytheme: {
 
-          "primary": "#4cc0c0",
+          "primary": "#711c40",
 
-          "secondary": "#98dede",
+          "secondary": "#642a43",
 
-          "accent": "#149999",
+          "accent": "#530928",
 
           "neutral": "#73777B",
 
           "base-100": "#F9F8FB",
 
-          "info": "#3A8FD4",
+          "info": "#5e2f43c4",
 
           "success": "#17976C",
 
