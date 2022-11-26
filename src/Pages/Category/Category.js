@@ -7,7 +7,7 @@ const Category = () => {
         <div className='mt-16'>
             <h1 className="font-bold text-3xl text-center text-accent mb-20">Category Name</h1>
 
-            <div className='grid lg:grid-cols-3 gap-y-10'>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-y-10'>
                 <div className="card w-96 mx-auto bg-base-100 text-center">
                     <figure><img src={img} alt="Shoes" className='w-52' /></figure>
                     <div className="card-body pt-0">
@@ -21,9 +21,50 @@ const Category = () => {
                         <p className='text-neutral'>Used: 2 years</p>
 
                         <small className='text-neutral'>Posted in 12.00 12th nov 2022, Dhaka, Bangladesh</small>
-                        <button className='btn btn-outline btn-accent '>Book Now</button>
+
+
+                        {/* The button to open modal */}
+                        <label htmlFor="my-modal" className="btn btn-outline btn-accent">Book Now</label>
+
+                        {/* Put this part before </body> tag */}
+                        <input type="checkbox" id="my-modal" className="modal-toggle" />
+                        <div className="modal">
+                            <div className="modal-box">
+                                <h3 className="font-bold text-lg text-accent mb-5">Book Name</h3>
+                                <form action="">
+                                    <div className=" grid gap-1 grid-cols-2 mb-2">
+                                        <input type="text" placeholder="Name" className="input input-bordered rounded " />
+                                        <input type="text" placeholder="Email" className="input input-bordered rounded" />
+                                    </div>
+                                    <div className=" grid gap-1 grid-cols-2 mb-2">
+                                        <input type="text" placeholder="Item Name" className="input input-bordered rounded " />
+                                        <input type="text" placeholder="Price" className="input input-bordered rounded" />
+                                    </div>
+                                    <input type="text" placeholder="Phone Number" className="input input-bordered rounded w-full mb-2" />
+
+                                    <input type="text" placeholder="Location" className="input input-bordered rounded w-full mb-2" />
+
+                                    <input className='btn btn-secondary text-accent w-full mt-5' type="submit" value="submit" />
+
+                                </form>
+
+                            </div>
+                        </div>
+
+
+
+
+
+
+
                     </div>
                 </div>
+
+
+
+
+
+
 
                 <div className="card w-96 mx-auto bg-base-100 text-center">
                     <figure><img src={img} alt="Shoes" className='w-52' /></figure>
