@@ -7,7 +7,7 @@ const Category = () => {
         <div className='mt-16'>
             <h1 className="font-bold text-3xl text-center text-accent mb-20">Category Name</h1>
 
-            <div className='grid grid-cols-3'>
+            <div className='grid lg:grid-cols-3 gap-y-10'>
                 <div className="card w-96 mx-auto bg-base-100 text-center">
                     <figure><img src={img} alt="Shoes" className='w-52' /></figure>
                     <div className="card-body pt-0">

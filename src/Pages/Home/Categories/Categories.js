@@ -36,7 +36,7 @@ const Categories = () => {
             </h1>
 
             <div>
-                <div className=" bg-white-200 grid gap-x-10 gap-y-10 lg:px-16 lg:grid-cols-3">
+                <div className=" bg-white-200 grid gap-x-10 gap-y-10 lg:px-16 lg:grid-cols-3 md:grid-cols-2">
 
                     {
                         infos.map(info => <Category
