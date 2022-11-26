@@ -43,7 +43,7 @@ const Review = () => {
 
     return (
         <div>
-            <h1 className='text-center text-4xl text-primary font-bold mt-32'>What people says about us</h1>
+            <h1 className='text-center text-4xl text-primary font-bold mt-32'>What people say about us</h1>
             <div className="hero bg-white ">
                 <div className="hero-content flex-col lg:flex-row">
                     <img src={img} className="w-5/12 rounded-lg hidden lg:block" alt='' />
