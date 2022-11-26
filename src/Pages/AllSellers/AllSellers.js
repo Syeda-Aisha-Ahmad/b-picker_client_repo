@@ -10,8 +10,10 @@ const AllSellers = () => {
                         <tr>
                             <th></th>
                             <th>Sellers</th>
-                            <th>Product Name</th>
-                            <th>Product Name</th>
+                            <th>Email</th>
+                            <th>Verify</th>
+                            <th>Delete</th>
+                            <th></th>
                         </tr>
                     </thead>
 
@@ -20,8 +22,9 @@ const AllSellers = () => {
                         <tr>
                             <th>1</th>
                             <td>Cy Ganderton</td>
-                            <td>Quality Control Specialist</td>
-                            <td>Quality Control Specialist</td>
+                            <td>fd@gmail.com</td>
+                            <td className='btn btn-ghost'>Verify</td>
+                            <td className='btn btn-red-400'>Delete</td>
                         </tr>
                     </tbody>
                 </table>
