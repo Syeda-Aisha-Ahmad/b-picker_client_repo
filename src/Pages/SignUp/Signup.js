@@ -14,6 +14,19 @@ const Signup = () => {
                     <div className="card flex-shrink-0 lg:w-7/12 max-w-sm border-2 bg-base-100">
                         <div className="card-body">
                             <h1 className='text-accent font-bold text-3xl text-center mb-5'>Create an account!</h1>
+
+                            <label className="label">
+                                <span className="label-text text-accent ">Create your account as a, </span>
+                            </label>
+                            <div className='grid grid-cols-2 gap-2'>
+                                <button className='flex border border-gray-300 rounded py-2 px-3'><input type="radio" name="radio-5" className="radio radio-neutral mr-4" checked />
+                                    User
+                                </button>
+                                <button className='flex border border-gray-300 rounded py-2 px-3'><input type="radio" name="radio-5" className="radio radio-neutral mr-4" />
+                                    Seller</button>
+                            </div>
+
+
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text text-accent ">Name</span>
