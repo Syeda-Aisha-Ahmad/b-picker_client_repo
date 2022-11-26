@@ -9,7 +9,7 @@ const Blog = () => {
             </div>
 
             {/* Question One */}
-            <div className='bg-warning bg-opacity-20 w-9/12 my-10 mx-auto py-10 px-20 rounded-2xl'>
+            <div className='bg-warning bg-opacity-20 lg:w-9/12 w-11/12 my-10 mx-auto py-10 lg:px-20 md:px-10 px-5 rounded-2xl'>
                 <h2 className='text-2xl text-accent mb-5'>Q.1 What are the different ways to manage a state in a React application?</h2>
                 <p className='text-lg'>Ans: There are four main types of state you need to properly manage in your React apps.</p>
                 <ol className='text-lg'>
@@ -22,19 +22,19 @@ const Blog = () => {
 
 
             {/* Question Two */}
-            <div className='bg-warning bg-opacity-20 w-9/12 my-10 mx-auto py-10 px-20 rounded-2xl'>
+            <div className='bg-warning bg-opacity-20 lg:w-9/12 w-11/12 my-10 mx-auto py-10 lg:px-20 md:px-10 px-5 rounded-2xl'>
                 <h2 className='text-2xl text-accent mb-5'>Q.2 How does prototypical inheritance work?</h2>
                 <p className='text-lg'>Ans:  It is a method by which an object can inherit the properties and methods of another object. Traditionally, in order to get and set the [[Prototype]] of an object, we use Object.</p>
             </div>
 
             {/* Question Three */}
-            <div className='bg-warning bg-opacity-20 w-9/12 my-10 mx-auto py-10 px-20 rounded-2xl'>
+            <div className='bg-warning bg-opacity-20 lg:w-9/12 w-11/12 my-10 mx-auto py-10 lg:px-20 md:px-10 px-5 rounded-2xl'>
                 <h2 className='text-2xl text-accent mb-5'>Q.3 What is a unit test? Why should we write unit tests?</h2>
                 <p className='text-lg'>Ans: The main objective of unit testing is to isolate written code to test and determine if it works as intended. Unit testing is an important step in the development process, because if done correctly, it can help detect early flaws in code which may be more difficult to find in later testing stages.</p>
             </div>
 
             {/* Question Four */}
-            <div className='bg-warning bg-opacity-20 w-9/12 my-10 mx-auto py-10 px-20 rounded-2xl'>
+            <div className='bg-warning bg-opacity-20 lg:w-9/12 w-11/12 my-10 mx-auto py-10 lg:px-20 md:px-10 px-5 rounded-2xl'>
                 <h2 className='text-2xl text-accent mb-5'>Q.4 React vs. Angular vs. Vue?</h2>
                 <p className='text-lg'>Ans: Vue provides higher customizability and hence is easier to learn than Angular or React. Further, Vue has an overlap with Angular and React with respect to their functionality like the use of components. Hence, the transition to Vue from either of the two is an easy option.</p>
             </div>
