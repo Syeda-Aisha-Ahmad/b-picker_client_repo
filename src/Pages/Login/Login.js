@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import login from '../../assets/login.jpg'
 import { AuthContext } from '../../Context/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import app from '../../firebase/Firebase.config';
 import google from '../../assets/google.png';
@@ -14,6 +14,10 @@ const Login = () => {
     const [userEmail, setUserEmail] = useState('');
 
     const auth = getAuth(app);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || '/';
 
     const handleLogin = data => {
         setLoginError('')
@@ -21,6 +25,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.log(error.message)
@@ -91,7 +96,7 @@ const Login = () => {
                                     <img src={google} className="w-12 p-3" alt="" />
                                     CONTINUE WITH GOOGLE</button>
                                 <label className="label">
-                                    <span className="label-text ">New to Doctors portal? <Link to={'/signup'} className='link link-primary text-x font-bold'>Create New Account</Link></span>
+                                    <span className="label-text ">New to Doctors portal? <Link to={'/signup'} className='text-primary link link-primary text-x font-bold'>Create New Account</Link></span>
                                 </label>
                             </form>
                         </div>

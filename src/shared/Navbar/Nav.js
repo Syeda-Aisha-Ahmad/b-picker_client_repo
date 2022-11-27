@@ -20,15 +20,7 @@ const Nav = () => {
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><Link to={'/'}>Home</Link></li>
-                        <li tabIndex={0}>
-                            <Link to={'/myorders'} className="justify-between">
-                                My Orders
-                            </Link>
-                        </li>
-                        <li><Link to={'/addproduct'}>Add A Product</Link></li>
-                        <li><Link to={'/myproducts'}>My Products</Link></li>
-                        <li><Link to={'/allsellers'}>All Sellers</Link></li>
-                        <li><Link to={'/allbuyers'}>All Buyers</Link></li>
+                        <li><Link to={'/dashboard'}>Dashboard</Link></li>
                         <li><Link to={'/blog'}>Blog</Link></li>
                     </ul>
                 </div>
@@ -37,23 +29,15 @@ const Nav = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
                     <li><Link to={'/'}>Home</Link></li>
-                    <li tabIndex={0}>
-                        <Link to={'/myorders'}>
-                            My Orders
-                        </Link>
-                    </li>
-                    <li><Link to={'/addproduct'}>Add A Product</Link></li>
-                    <li><Link to={'/myproducts'}>My Products</Link></li>
-                    <li><Link to={'/allsellers'}>All Sellers</Link></li>
-                    <li><Link to={'/allbuyers'}>All Buyers</Link></li>
+                    <li><Link to={'/dashboard'}>Dashboard</Link></li>
                     <li><Link to={'/blog'}>Blog</Link></li>
                 </ul>
             </div>
             <div className="navbar-end">
                 {
-                    user?.uid ? <Link to={'/login'} onClick={handleLogout} className="btn btn-outline btn-white px-10 text-white">Log out</Link>
+                    user?.uid ? <Link to={'/'} onClick={handleLogout} className="btn btn-outline btn-white px-10 text-white">Log out</Link>
                         :
-                        <Link to={'/'} className="btn btn-outline btn-white px-10 text-white">Login</Link>
+                        <Link to={'/login'} className="btn btn-outline btn-white px-10 text-white">Login</Link>
                 }
 
 

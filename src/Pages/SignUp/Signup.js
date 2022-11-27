@@ -19,6 +19,8 @@ const Signup = () => {
                 console.log(user)
                 updateProfile(auth.currentUser, {
                     displayName: fname,
+                    photoURL: data.account
+
                 })
                 result.reset()
             })
