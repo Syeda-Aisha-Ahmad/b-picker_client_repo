@@ -13,7 +13,7 @@ const Signup = () => {
                     </div>
                     <div className="card flex-shrink-0 lg:w-7/12 max-w-sm border-2 bg-base-100">
                         <div className="card-body">
-                            <h1 className='text-accent font-bold text-3xl text-center mb-5'>Create an account!</h1>
+                            <h1 className='text-accent font-bold text-3xl text-center mb-5'>Create an account</h1>
 
                             <label className="label">
                                 <span className="label-text text-accent ">Create your account as a, </span>
