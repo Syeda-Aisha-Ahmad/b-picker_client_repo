@@ -1,9 +1,53 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import login from '../../assets/login.jpg'
-import google from '../../assets/google.png'
+import { AuthContext } from '../../Context/AuthProvider';
 import { Link } from 'react-router-dom';
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import app from '../../firebase/Firebase.config';
+import google from '../../assets/google.png';
 
 const Login = () => {
+    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { loginUser } = useContext(AuthContext);
+    const [loginError, setLoginError] = useState();
+    const [userEmail, setUserEmail] = useState('');
+
+    const auth = getAuth(app);
+
+    const handleLogin = data => {
+        setLoginError('')
+        loginUser(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => {
+                console.log(error.message)
+                setLoginError(error.message)
+            })
+    }
+
+    // reset pass
+
+    const getEmail = event => {
+        const email = event.target.value;
+
+        setUserEmail(email)
+        console.log(email)
+
+    }
+
+    const resetPass = () => {
+        sendPasswordResetEmail(auth, userEmail)
+            .then(() => {
+                alert('Password reset email sent')
+            })
+            .catch(error => {
+                console.error(error)
+            })
+    }
+
     return (
         <div>
             <div className="hero min-h-screen bg-white">
@@ -14,26 +58,42 @@ const Login = () => {
                     <div className="card flex-shrink-0 w-full max-w-sm border-2 bg-base-100">
                         <div className="card-body">
                             <h1 className='text-accent font-bold text-3xl text-center'>Login!</h1>
-                            <div className="form-control">
+                            <form onSubmit={handleSubmit(handleLogin)}>
+                                <div className="form-control w-full">
+                                    <label className="label">
+                                        <span className="label-text text-lg">Email</span>
+                                    </label>
+                                    <input type="text" onBlur={getEmail} />
+                                    <input type="email" {...register("email", {
+                                        required: "Email Address is required",
+                                        onBlur: (event) => setUserEmail(event.target.value)
+                                    })}
+                                        className="input input-bordered w-full" />
+                                    {errors.email && <p role="alert" className='text-error'>{errors.email?.message}</p>}
+                                </div>
+
+                                <div className="form-control w-full mt-5">
+                                    <label className="label">
+                                        <span className="label-text text-lg">Password</span>
+                                    </label>
+                                    <input type="password" {...register("password", { required: "Password is required" })} className="input input-bordered w-full" />
+                                    {errors.password && <p role="alert" className='text-error'>{errors.password?.message}</p>}
+                                    {loginError && <p className='text-error'>{loginError}</p>}
+                                    <label className="label">
+                                        <span className="label-text ">Forget Password? <span className='font-bold' onClick={resetPass}>Reset</span></span>
+                                    </label>
+                                </div>
+
+                                <input className='btn btn-primary text-white w-full mt-5' type="submit" />
+
+                                <div className="divider">OR</div>
+                                <button className='btn btn-primary btn-outline w-full' type="submit">
+                                    <img src={google} className="w-12 p-3" alt="" />
+                                    CONTINUE WITH GOOGLE</button>
                                 <label className="label">
-                                    <span className="label-text text-accent ">Email</span>
+                                    <span className="label-text ">New to Doctors portal? <Link to={'/signup'} className='link link-primary text-x font-bold'>Create New Account</Link></span>
                                 </label>
-                                <input type="text" placeholder="email" className="input input-bordered" />
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text text-accent ">Password</span>
-                                </label>
-                                <input type="text" placeholder="password" className="input input-bordered" />
-                                <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover text-neutral">Forgot password?</a>
-                                </label>
-                            </div>
-                            <div className="form-control mt-6">
-                                <button className="btn btn-primary text-white mb-5">Login</button>
-                                <img src={google} className="w-12 mx-auto border border-info rounded-full p-2" alt="" />
-                            </div>
-                            <p>New to B-Picker? <Link to={'/signup'} className='link link-primary font-bold'>Sign up</Link></p>
+                            </form>
                         </div>
                     </div>
                 </div>
