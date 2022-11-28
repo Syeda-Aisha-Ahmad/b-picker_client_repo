@@ -8,7 +8,7 @@ import { getAuth, updateProfile } from 'firebase/auth';
 
 const Signup = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { createUser } = useContext(AuthContext);
+    const { createUser, googleLogin } = useContext(AuthContext);
     const auth = getAuth();
     const handleLogin = (data) => {
         const { email, password, fname } = data;
@@ -27,7 +27,17 @@ const Signup = () => {
             .catch(error => {
                 console.log(error)
             })
-
+    }
+    // Google Login
+    const googleLoginUser = () => {
+        googleLogin()
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
     return (
         <div>
@@ -87,7 +97,7 @@ const Signup = () => {
                                 <input className='btn btn-primary text-white w-full mt-5' type="submit" />
 
                                 <div className="divider">OR</div>
-                                <button className='btn btn-primary btn-outline w-full' type="submit">
+                                <button onClick={googleLoginUser} className='btn btn-primary btn-outline w-full' type="submit">
                                     <img src={google} className="w-12 p-3" alt="" />
                                     CONTINUE WITH GOOGLE</button>
 

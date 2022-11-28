@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Category.css'
 
-const Category = ({ info }) => {
-    const { name, image, bgImage } = info;
+const Category = ({ category }) => {
+    const { name, image, bgImage, _id } = category;
     return (
         <div className='parent'>
 
@@ -19,7 +19,7 @@ const Category = ({ info }) => {
                         <Link to={`category/${name}`}>
                             <img src={image} className="rounded-lg shadow-2x" alt='img' /></Link>
                     </div>
-                    <Link to={`category/${name}`}><button className="btn btn-ghost text-slate-200 text-xl">{name}</button></Link>
+                    <Link to={`category/${_id}`}><button className="btn btn-ghost text-slate-200 text-xl">{name}</button></Link>
                 </div>
             </div>
         </div >

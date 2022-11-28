@@ -9,7 +9,7 @@ import google from '../../assets/google.png';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { loginUser } = useContext(AuthContext);
+    const { loginUser, googleLogin } = useContext(AuthContext);
     const [loginError, setLoginError] = useState();
     const [userEmail, setUserEmail] = useState('');
 
@@ -30,6 +30,18 @@ const Login = () => {
             .catch(error => {
                 console.log(error.message)
                 setLoginError(error.message)
+            })
+    }
+
+    // google login
+    const googleLoginUser = () => {
+        googleLogin()
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => {
+                console.catch(error)
             })
     }
 
@@ -92,11 +104,11 @@ const Login = () => {
                                 <input className='btn btn-primary text-white w-full mt-5' type="submit" />
 
                                 <div className="divider">OR</div>
-                                <button className='btn btn-primary btn-outline w-full' type="submit">
+                                <button onClick={googleLoginUser} className='btn btn-primary btn-outline w-full' type="submit">
                                     <img src={google} className="w-12 p-3" alt="" />
                                     CONTINUE WITH GOOGLE</button>
                                 <label className="label">
-                                    <span className="label-text ">New to Doctors portal? <Link to={'/signup'} className='text-primary link link-primary text-x font-bold'>Create New Account</Link></span>
+                                    <span className="label-text ">New to Doctors portal? <Link to={'/signup'} className='text-primary text-x font-bold'>Create New Account</Link></span>
                                 </label>
                             </form>
                         </div>
