@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Context/AuthProvider';
 import { getAuth, updateProfile } from 'firebase/auth';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Signup = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -17,12 +18,14 @@ const Signup = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                toast.success('Successfully Account Created!')
                 updateProfile(auth.currentUser, {
                     displayName: fname,
                     tenantId: data.account
 
                 })
                 result.reset()
+
             })
             .catch(error => {
                 console.log(error)
@@ -41,6 +44,10 @@ const Signup = () => {
     }
     return (
         <div>
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
             <div className="hero min-h-screen bg-white my-5">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left lg:w-5/12 lg:ml-5">
