@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import app from '../../firebase/Firebase.config';
 import google from '../../assets/google.png';
+import useToken from '../../hook/useToken/useToken';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -13,19 +14,26 @@ const Login = () => {
     const [loginError, setLoginError] = useState();
     const [userEmail, setUserEmail] = useState('');
 
+    const [LogUserEmail, setLogUserEmail] = useState('')
+    const [token] = useToken(LogUserEmail);
+
     const auth = getAuth(app);
     const location = useLocation();
     const navigate = useNavigate();
 
     const from = location.state?.from?.pathname || '/';
 
+    if (token) {
+        navigate(from, { replace: true });
+    }
+
     const handleLogin = data => {
         setLoginError('')
         loginUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user)
-                navigate(from, { replace: true });
+                setLogUserEmail(data.email)
+
             })
             .catch(error => {
                 console.log(error.message)

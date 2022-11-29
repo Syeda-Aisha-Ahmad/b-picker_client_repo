@@ -7,13 +7,17 @@ const MyProducts = () => {
     const { data: products, isLoading, refetch } = useQuery({
         queryKey: ['addproducts'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/addproducts');
+            const res = await fetch('http://localhost:5000/addproducts', {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
             const data = await res.json();
             return data;
         }
     })
 
-    const handleDeleteDoctor = product => {
+    const handleDelete = product => {
         fetch(`http://localhost:5000/addproducts/${product._id}`, {
             method: 'DELETE'
         })
@@ -71,12 +75,12 @@ const MyProducts = () => {
                     <tbody>
 
                         {
-                            products.map(singleProduct => <tr>
-                                <th>1</th>
+                            products.map((singleProduct, i) => <tr>
+                                <th>{i + 1}</th>
                                 <td>{singleProduct.product}</td>
                                 <td>sold</td>
                                 <td>{singleProduct.price}</td>
-                                <td><button onClick={() => handleDeleteDoctor(singleProduct)} className='text-red-600'>Delete</button></td>
+                                <td><button onClick={() => handleDelete(singleProduct)} className='text-red-600'>Delete</button></td>
                                 <td><button onClick={() => submit(singleProduct)} className='btn btn-warning border-0 bg-red-300 text-white'>Advertise</button></td>
                             </tr>)
                         }

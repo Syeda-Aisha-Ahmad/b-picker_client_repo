@@ -28,8 +28,10 @@ const Nav = () => {
                         <li><Link to={'/blog'}>Blog</Link></li>
                     </ul>
                 </div>
-                <Link to={'/'}><img src={logo} className="w-10 mr-2" alt="" /></Link>
-                <Link to={'/'} className=" text-white normal-case font-bold text-2xl">  B-Picker</Link>
+                <div className='flex items-center'>
+                    <Link to={'/'}><img src={logo} className="w-8 mr-3 mt-1" alt="" /></Link>
+                    <Link to={'/'} className=" text-white normal-case font-bold text-2xl">  B-Picker</Link>
+                </div>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">

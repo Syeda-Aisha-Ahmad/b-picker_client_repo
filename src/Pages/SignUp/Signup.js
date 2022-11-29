@@ -1,29 +1,41 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import signup from '../../assets/signup.jpg'
 import google from '../../assets/google.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Context/AuthProvider';
-import { getAuth, updateProfile } from 'firebase/auth';
 import toast, { Toaster } from 'react-hot-toast';
+import useToken from '../../hook/useToken/useToken';
 
 const Signup = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { createUser, googleLogin } = useContext(AuthContext);
-    const auth = getAuth();
+    const { createUser, googleLogin, updateUser } = useContext(AuthContext);
+    const [createdUserEmail, setCreatedUserEmail] = useState('')
+    const [token] = useToken(createdUserEmail);
+    const navigate = useNavigate();
+
+    if (token) {
+        navigate('/');
+    }
+
     const handleLogin = (data) => {
-        const { email, password, fname } = data;
+        const { email, password } = data;
 
         createUser(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user)
                 toast.success('Successfully Account Created!')
-                updateProfile(auth.currentUser, {
-                    displayName: fname,
-                    tenantId: data.account
 
-                })
+                const userInfo = {
+                    displayName: data.fname,
+                }
+
+                updateUser(userInfo)
+                    .then(() => {
+                        saveUser(data.fname, data.email, data.account);
+                    })
+                    .catch(error => console.log(error));
                 result.reset()
 
             })
@@ -42,6 +54,23 @@ const Signup = () => {
                 console.log(error)
             })
     }
+
+    const saveUser = (name, email, account) => {
+        const user = { name, email, account };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                setCreatedUserEmail(email);
+            })
+    }
+
+
     return (
         <div>
             <Toaster
@@ -68,7 +97,7 @@ const Signup = () => {
                                     <button className='flex border border-gray-300 rounded py-2 px-3'><input type="radio" name="user" value="user" {...register("account")} className="radio radio-neutral mr-4" checked />
                                         User
                                     </button>
-                                    <button className='flex border border-gray-300 rounded py-2 px-3'><input type="radio" name="seller" value="seller" {...register("account")} className="radio radio-neutral mr-4" />
+                                    <button className='flex border border-gray-300 rounded py-2 px-3'><input type="radio" name="admin" value="admin" {...register("account")} className="radio radio-neutral mr-4" />
                                         Seller</button>
                                 </div>
 

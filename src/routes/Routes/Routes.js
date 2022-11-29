@@ -12,7 +12,9 @@ import MyOrders from "../../Pages/MyOrders/MyOrders";
 import MyProducts from "../../Pages/MyProducts/MyProducts";
 import Payment from "../../Pages/Payment/Payment";
 import Signup from "../../Pages/SignUp/Signup";
+import AdminRoutes from "../AdminRoutes/AdminRoutes";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
+import UserRoutes from "../UserRoutes/UserRoutes";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../../layouts/Main/Main");
@@ -28,7 +30,10 @@ const router = createBrowserRouter([
             },
             {
                 path: '/category/:id',
-                element: <Category></Category>
+                element: <Category></Category>,
+                loader: async ({ params }) => {
+                    return fetch(`http://localhost:5000/addproducts/${params.category}`);
+                },
             },
             {
                 path: '/blog',
@@ -54,7 +59,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/myorders',
-                element: <MyOrders></MyOrders>
+                element: <UserRoutes><MyOrders></MyOrders></UserRoutes>
             },
             {
                 path: '/dashboard/payment',
@@ -74,11 +79,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/allsellers',
-                element: <AllSellers></AllSellers>
+                element: <AdminRoutes><AllSellers></AllSellers></AdminRoutes>
             },
             {
                 path: '/dashboard/allbuyers',
-                element: <AllBuyers></AllBuyers>
+                element: <AdminRoutes><AllBuyers></AllBuyers></AdminRoutes>
             }
         ]
     },

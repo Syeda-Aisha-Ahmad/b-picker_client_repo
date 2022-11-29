@@ -37,7 +37,7 @@ const AddProduct = () => {
             photo,
             description
         }
-        console.log(addProductsData)
+        console.log(category)
 
 
         fetch('http://localhost:5000/addproducts', {

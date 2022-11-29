@@ -11,6 +11,8 @@ const Categories = () => {
             .then(data => setCategories(data))
     }, [])
 
+
+
     return (
         <div className='mt-24'>
             <h1 className='text-center text-accent font-bold text-4xl mb-5'>
@@ -22,9 +24,9 @@ const Categories = () => {
                 <div className=" bg-white-200 grid gap-x-10 gap-y-10 lg:px-28 px-10 lg:grid-cols-3 md:grid-cols-2">
 
                     {
-                        categories.map(category => <Category
-                            key={category._id}
-                            category={category}
+                        categories.map(categoryy => <Category
+                            key={categoryy._id}
+                            categoryy={categoryy}
                         ></Category>)
                     }
                 </div>
