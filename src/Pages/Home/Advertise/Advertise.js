@@ -10,14 +10,14 @@ const Advertise = () => {
     const { data: products, isLoading, refetch } = useQuery({
         queryKey: ['addproducts'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/advertise');
+            const res = await fetch('https://server-12.vercel.app/advertise');
             const data = await res.json();
             return data;
         }
     })
 
     const handleDelete = product => {
-        fetch(`http://localhost:5000/advertise/${product._id}`, {
+        fetch(`https://server-12.vercel.app/advertise/${product._id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

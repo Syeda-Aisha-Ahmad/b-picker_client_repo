@@ -6,7 +6,7 @@ import Category from './Category';
 
 const Categories = () => {
 
-    const url = "http://localhost:5000/categories"
+    const url = "https://server-12.vercel.app/categories"
 
     const [categories, setCategories] = React.useState(null);
     const { loading } = useContext(AuthContext);

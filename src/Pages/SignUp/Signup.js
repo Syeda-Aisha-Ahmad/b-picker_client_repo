@@ -62,7 +62,7 @@ const Signup = () => {
 
     const saveUser = (name, email, account) => {
         const user = { name, email, account };
-        fetch('http://localhost:5000/users', {
+        fetch('https://server-12.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

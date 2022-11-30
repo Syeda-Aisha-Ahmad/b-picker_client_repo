@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 
 
-const url = "http://localhost:5000/users/buyer";
+const url = "https://server-12.vercel.app/users/buyer";
 
 
 const AllBuyers = () => {
@@ -19,7 +19,7 @@ const AllBuyers = () => {
     })
 
     const handleDelete = user => {
-        fetch(`http://localhost:5000/users/buyer/${user._id}`, {
+        fetch(`https://server-12.vercel.app/users/buyer/${user._id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

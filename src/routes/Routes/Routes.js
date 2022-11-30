@@ -35,7 +35,7 @@ const router = createBrowserRouter([
                 path: '/category/:id',
                 element: <PrivateRoutes><Category></Category></PrivateRoutes>,
                 loader: async ({ params }) => {
-                    return fetch(`http://localhost:5000/addproducts/${params.category}`);
+                    return fetch(`https://server-12.vercel.app/addproducts/${params.category}`);
                 },
             },
             {

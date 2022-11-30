@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 import Loading from '../../shared/Loading/Loading';
 import { useQuery } from '@tanstack/react-query';
 
-const url = "http://localhost:5000/users/seller";
+const url = "https://server-12.vercel.app/users/seller";
 
 const AllSellers = () => {
     const { data: sellers, isLoading, refetch } = useQuery({
@@ -21,7 +21,7 @@ const AllSellers = () => {
 
 
     const handleDelete = user => {
-        fetch(`http://localhost:5000/users/seller/${user._id}`, {
+        fetch(`https://server-12.vercel.app/users/seller/${user._id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

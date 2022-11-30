@@ -10,7 +10,7 @@ const MyProducts = () => {
 
 
 
-    const url = `http://localhost:5000/dashboard/myproducts?email=${user?.email}`;
+    const url = `https://server-12.vercel.app/dashboard/myproducts?email=${user?.email}`;
 
     const { data: myProducts = [], isLoading, refetch } = useQuery({
         queryKey: ['myProducts', user?.email],
@@ -22,7 +22,7 @@ const MyProducts = () => {
     })
     console.log(myProducts);
     const handleDelete = product => {
-        fetch(`http://localhost:5000/addproducts/${product._id}`, {
+        fetch(`https://server-12.vercel.app/addproducts/${product._id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -40,7 +40,7 @@ const MyProducts = () => {
     }
 
     const submit = (product) => {
-        fetch(`http://localhost:5000/advertise`, {
+        fetch(`https://server-12.vercel.app/advertise`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
