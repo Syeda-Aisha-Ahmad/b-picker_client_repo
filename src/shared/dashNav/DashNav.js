@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import logo from '../../assets/logo.png'
 
-const Nav = () => {
+const DashNav = () => {
     const { user, logOut } = useContext(AuthContext);
 
     // Logout
@@ -26,6 +26,11 @@ const Nav = () => {
                         }
 
                         <li><Link to={'/blog'}>Blog</Link></li>
+                        {
+                            user?.uid ? <Link to={'/'} onClick={handleLogout} className="btn btn-primary btn-outline lg:btn-white md:btn-white px-10 lg:text-white  md:text-white">Log out</Link>
+                                :
+                                <Link to={'/login'} className="btn btn-outline  lg:btn-white md:btn-white px-10 lg:text-white md:text-white">Login</Link>
+                        }
                     </ul>
                 </div>
                 <div className='flex items-center'>
@@ -41,15 +46,18 @@ const Nav = () => {
                     }
                     <li><Link to={'/blog'}>Blog</Link></li>
                 </ul>
+
             </div>
             <div className="navbar-end">
+
                 {
-                    user?.uid ? <Link to={'/'} onClick={handleLogout} className="btn btn-outline btn-white px-10 text-white">Log out</Link>
+                    user?.uid ? <Link to={'/'} onClick={handleLogout} className="btn btn-outline lg:btn-white md:btn-white px-10 pt-4 lg:text-white md:text-white lg:block md:block hidden ">Log out</Link>
                         :
-                        <Link to={'/login'} className="btn btn-outline btn-white px-10 text-white">Login</Link>
+                        <Link to={'/login'} className="btn btn-outline lg:btn-white md:btn-white px-10 pt-4 lg:text-white md:text-white lg:block md:block hidden">Login</Link>
                 }
-
-
+                <label htmlFor="my-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                </label>
 
 
             </div>
@@ -57,4 +65,4 @@ const Nav = () => {
     );
 };
 
-export default Nav;
+export default DashNav;

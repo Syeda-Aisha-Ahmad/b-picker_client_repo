@@ -12,7 +12,7 @@ const Category = () => {
         <div className='mt-16'>
 
 
-            <h1 className="font-bold text-3xl text-center text-accent mb-20">{categories.location}Category Name</h1>
+            <h1 className="font-bold text-3xl text-center text-accent mb-20">{categories.length}Category Name</h1>
 
             <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-y-10'>
                 <div className="card w-96 mx-auto bg-base-100 text-center">

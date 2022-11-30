@@ -8,12 +8,15 @@ import Category from "../../Pages/Category/Category";
 import Dashboard from "../../Pages/Dashboard/Dashboard";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
+import MyBuyers from "../../Pages/MyBuyers/MyBuyers";
 import MyOrders from "../../Pages/MyOrders/MyOrders";
 import MyProducts from "../../Pages/MyProducts/MyProducts";
 import Payment from "../../Pages/Payment/Payment";
+import Reported from "../../Pages/Reported/Reported";
 import Signup from "../../Pages/SignUp/Signup";
 import AdminRoutes from "../AdminRoutes/AdminRoutes";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
+import SellerRoutes from "../SellerRoutes/SellerRoutes";
 import UserRoutes from "../UserRoutes/UserRoutes";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -30,7 +33,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/category/:id',
-                element: <Category></Category>,
+                element: <PrivateRoutes><Category></Category></PrivateRoutes>,
                 loader: async ({ params }) => {
                     return fetch(`http://localhost:5000/addproducts/${params.category}`);
                 },
@@ -67,15 +70,19 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/addproduct',
-                element: <AddProduct></AddProduct>
+                element: <SellerRoutes><AddProduct></AddProduct></SellerRoutes>
             },
             {
                 path: '/dashboard/myproducts',
-                element: <MyProducts></MyProducts>
+                element: <SellerRoutes><MyProducts></MyProducts></SellerRoutes>
             },
             {
-                path: '/dashboard/myproducts',
-                element: <MyProducts></MyProducts>
+                path: '/dashboard/mybuyers',
+                element: <SellerRoutes><MyBuyers></MyBuyers></SellerRoutes>
+            },
+            {
+                path: '/dashboard/reported',
+                element: <AdminRoutes><Reported></Reported></AdminRoutes>
             },
             {
                 path: '/dashboard/allsellers',

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './Category.css'
 
 const Category = ({ categoryy }) => {
+
     const { name, image, bgImage, _id, category } = categoryy;
 
 
@@ -20,10 +21,10 @@ const Category = ({ categoryy }) => {
             <div className="absolute transform top-14 inset-x-2">
                 <div className="hero-content flex-col flex-column-reverse">
                     <div className="w-32">
-                        <Link to={`category/${name}`}>
+                        <Link to={`category/${_id}`}>
                             <img src={image} className="rounded-lg shadow-2x" alt='img' /></Link>
                     </div>
-                    <Link to={`category/${category}`}><button className="btn btn-ghost text-slate-200 text-xl">{name}</button></Link>
+                    <Link to={`category/${_id}`}><button className="btn btn-ghost text-slate-200 text-xl">{name}</button></Link>
                 </div>
             </div>
         </div >

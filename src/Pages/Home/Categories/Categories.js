@@ -1,16 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../../Context/AuthProvider';
+import Loading from '../../../shared/Loading/Loading';
 import Category from './Category';
 
 const Categories = () => {
 
-    const [categories, setCategories] = useState([]);
+    const url = "http://localhost:5000/categories"
 
-    useEffect(() => {
-        fetch('http://localhost:5000/categories')
-            .then(res => res.json())
-            .then(data => setCategories(data))
-    }, [])
+    const [categories, setCategories] = React.useState(null);
+    const { loading } = useContext(AuthContext);
 
+    React.useEffect(() => {
+        axios.get(url).then((response) => {
+            setCategories(response.data);
+        });
+    }, []);
+
+    if (!categories) return null;
+    if (loading) {
+        return <Loading></Loading>
+    }
 
 
     return (

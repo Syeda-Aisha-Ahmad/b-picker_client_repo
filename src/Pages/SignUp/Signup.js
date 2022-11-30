@@ -18,6 +18,7 @@ const Signup = () => {
         navigate('/');
     }
 
+
     const handleLogin = (data) => {
         const { email, password } = data;
 
@@ -43,12 +44,16 @@ const Signup = () => {
                 console.log(error)
             })
     }
+
     // Google Login
     const googleLoginUser = () => {
+        const account = "buyer";
         googleLogin()
             .then(result => {
                 const user = result.user;
-                console.log(user)
+                console.log(user.displayName)
+
+                saveUser(user.displayName, user.email, account)
             })
             .catch(error => {
                 console.log(error)
@@ -94,10 +99,10 @@ const Signup = () => {
                                 {/* Radio buttons */}
 
                                 <div className='grid grid-cols-2 gap-2'>
-                                    <button className='flex border border-gray-300 rounded py-2 px-3'><input type="radio" name="user" value="user" {...register("account")} className="radio radio-neutral mr-4" checked />
-                                        User
+                                    <button className='flex border border-gray-300 rounded py-2 px-3'><input type="radio" name="buyer" value="buyer" {...register("account")} className="radio radio-neutral mr-4" checked />
+                                        Buyer
                                     </button>
-                                    <button className='flex border border-gray-300 rounded py-2 px-3'><input type="radio" name="admin" value="admin" {...register("account")} className="radio radio-neutral mr-4" />
+                                    <button className='flex border border-gray-300 rounded py-2 px-3'><input type="radio" name="seller" value="seller" {...register("account")} className="radio radio-neutral mr-4" />
                                         Seller</button>
                                 </div>
 

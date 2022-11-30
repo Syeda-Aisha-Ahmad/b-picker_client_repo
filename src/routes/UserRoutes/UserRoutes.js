@@ -2,17 +2,18 @@ import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import useUser from '../../hook/userAccount/userAccount';
+import Loading from '../../shared/Loading/Loading';
 
 const UserRoutes = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
-    const [isUser, isUserLoading] = useUser(user?.email);
+    const [isBuyer, isBuyerLoading] = useUser(user?.email);
     const location = useLocation();
 
-    if (loading || isUserLoading) {
-        return <p>fd</p>
+    if (loading || isBuyerLoading) {
+        return <Loading></Loading>
     }
 
-    if (user && isUser) {
+    if (user && isBuyer) {
         return children;
     }
 

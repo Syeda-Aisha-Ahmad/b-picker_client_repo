@@ -13,6 +13,7 @@ const Login = () => {
     const { loginUser, googleLogin } = useContext(AuthContext);
     const [loginError, setLoginError] = useState();
     const [userEmail, setUserEmail] = useState('');
+    const [createdUserEmail, setCreatedUserEmail] = useState('')
 
     const [LogUserEmail, setLogUserEmail] = useState('')
     const [token] = useToken(LogUserEmail);
@@ -43,13 +44,30 @@ const Login = () => {
 
     // google login
     const googleLoginUser = () => {
+        const account = "buyer";
         googleLogin()
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                saveUser(user.displayName, user.email, account)
             })
             .catch(error => {
                 console.catch(error)
+            })
+    }
+
+    const saveUser = (name, email, account) => {
+        const user = { name, email, account };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                setCreatedUserEmail(email);
             })
     }
 

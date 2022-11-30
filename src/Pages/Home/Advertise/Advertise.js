@@ -2,8 +2,8 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import correct from '../../../assets/correct.png'
-import img from '../../../assets/fiction.jpg'
 import { AuthContext } from '../../../Context/AuthProvider';
+import Loading from '../../../shared/Loading/Loading';
 
 const Advertise = () => {
     const { user } = useContext(AuthContext);
@@ -22,17 +22,16 @@ const Advertise = () => {
         })
             .then(res => res.json())
             .then(data => {
-                if (data.deletedCount === 0) {
+                if (data.deletedCount > 0) {
                     refetch();
                     toast.success(`${product.name} deleted successfully`)
+                    console.log(data);
                 }
-                console.log(data);
             })
-        // console.log('done')0
     }
 
     if (isLoading) {
-        return <p>fd</p>
+        return <Loading></Loading>
     }
 
     console.log(user)
@@ -71,7 +70,7 @@ const Advertise = () => {
 
                                         <button></button>
                                         {/* The button to open modal */}
-                                        <button onClick={() => handleDelete(product)} htmlFor="my-modal" className="btn btn-outline btn-accent">Book Now</button>
+                                        <button onClick={() => handleDelete(product)} className="btn btn-outline btn-accent">Book Now</button>
 
                                     </div>
                                 </div>)

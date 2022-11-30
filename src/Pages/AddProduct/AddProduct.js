@@ -37,7 +37,6 @@ const AddProduct = () => {
             photo,
             description
         }
-        console.log(category)
 
 
         fetch('http://localhost:5000/addproducts', {
@@ -52,6 +51,7 @@ const AddProduct = () => {
                 setDataa(data)
                 if (data.acknowledged) {
                     toast.success('Successfully toasted!')
+                    loading(true)
                 }
                 else {
                     alert(data.message);

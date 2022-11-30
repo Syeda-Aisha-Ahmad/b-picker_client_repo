@@ -68,3 +68,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### Project Name, B-Picker###
+
+• React, react-router-dom added 
+• Frame work : tailwind, daisi ui
+• Firebase for authentication
+• Hot-toast added
+• spinner added
+
+## live website link ##
+Link: 

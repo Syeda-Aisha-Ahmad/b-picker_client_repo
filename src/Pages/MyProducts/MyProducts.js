@@ -1,28 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
+import Loading from '../../shared/Loading/Loading';
+import { AuthContext } from '../../Context/AuthProvider';
 
 const MyProducts = () => {
 
-    const { data: products, isLoading, refetch } = useQuery({
-        queryKey: ['addproducts'],
+    const { user } = useContext(AuthContext);
+
+
+
+    const url = `http://localhost:5000/dashboard/myproducts?email=${user?.email}`;
+
+    const { data: myProducts = [], isLoading, refetch } = useQuery({
+        queryKey: ['myProducts', user?.email],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/addproducts', {
-                headers: {
-                    authorization: `bearer ${localStorage.getItem('accessToken')}`
-                }
-            });
-            const data = await res.json();
+            const res = await fetch(url);
+            const data = res.json();
             return data;
         }
     })
-
+    console.log(myProducts);
     const handleDelete = product => {
         fetch(`http://localhost:5000/addproducts/${product._id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
             .then(data => {
+
                 if (data.deletedCount > 0) {
                     refetch();
                     toast.success(`${product.name} deleted successfully`)
@@ -31,7 +36,7 @@ const MyProducts = () => {
     }
 
     if (isLoading) {
-        return <p>fd</p>
+        return <Loading></Loading>
     }
 
     const submit = (product) => {
@@ -75,7 +80,7 @@ const MyProducts = () => {
                     <tbody>
 
                         {
-                            products.map((singleProduct, i) => <tr>
+                            myProducts.map((singleProduct, i) => <tr>
                                 <th>{i + 1}</th>
                                 <td>{singleProduct.product}</td>
                                 <td>sold</td>
