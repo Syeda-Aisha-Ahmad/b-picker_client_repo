@@ -42,13 +42,13 @@ const Review = () => {
     ]
 
     return (
-        <div>
+        <div className='max-w-[87%] mx-auto'>
             <h1 className='text-center text-4xl text-primary font-bold mt-32'>What people say about us</h1>
             <div className="hero bg-white ">
                 <div className="hero-content flex-col lg:flex-row">
                     <img src={img} className="w-5/12 rounded-lg hidden lg:block" alt='' />
                     <div className='border-2 border-gray-300 p-10 bg-success'>
-                        <div className="carousel w-full text-center">
+                        <div className="carousel lg:w-full md:w-full w-60 mx-auto text-center">
                             {
                                 reviewData.map(review => <ReviewData
                                     key={review.id}
