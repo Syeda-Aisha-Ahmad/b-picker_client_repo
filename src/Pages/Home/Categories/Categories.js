@@ -24,7 +24,7 @@ const Categories = () => {
 
 
     return (
-        <div className='mt-24'>
+        <div className='my-24'>
             <h1 className='text-center text-accent font-bold text-4xl mb-5'>
                 Categories
             </h1>
