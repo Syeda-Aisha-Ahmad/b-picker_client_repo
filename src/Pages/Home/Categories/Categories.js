@@ -30,8 +30,8 @@ const Categories = () => {
             </h1>
             <p className='text-lg text-neutral text-center mb-10 lg:w-5/12 mx-auto'>These are the popular book categories of our site. Browse through your favorite category</p>
 
-            <div>
-                <div className=" bg-white-200 grid gap-x-10 gap-y-10 lg:px-28 px-10 lg:grid-cols-3 md:grid-cols-2">
+            <div className='max-w-[87%] mx-auto'>
+                <div className=" bg-white-200 grid gap-x-10 gap-y-10 lg:grid-cols-3 md:grid-cols-2">
 
                     {
                         categories.map(categoryy => <Category
